@@ -1,9 +1,11 @@
 package com.example.mathgame
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +44,25 @@ class QuestionsActivity : AppCompatActivity() {
 
         }
 
+
+    fun calcular (view: View){
+
+        //if valor inserido == calc -> certo
+        val resposta = findViewById<EditText>(R.id.editTextNumber)
+        val calculo = getOperator(view)
+        val colorLayout = findViewById(R.id.button) as Button
+        if (resposta.toString().toInt() == calculo) {
+            colorLayout.setBackgroundColor(Color.GREEN)
+        } else {
+            colorLayout.setBackgroundColor(Color.RED)
+        }
+
+        // habilita o botao next, até chegar na última questão.
+
+
+
+        //deixar o botao de next visivel
+    }
 
     fun goNextActivity(view:View){
         val intent = Intent(this, ResultActivity::class.java)
