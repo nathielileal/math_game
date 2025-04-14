@@ -16,6 +16,12 @@ class QuestionsActivity : AppCompatActivity() {
     private var tries = 0
     private var right = 0
     val options = listOf<String>( "+", "-")
+    var n1 : Int = 0
+    var n2 : Int =  0
+    var operator = ""
+//
+//    val bttnAnswer = findViewById<Button>(R.id.buttonAnswer)
+//    val bttnNext = findViewById<Button>(R.id.buttonNext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,46 +33,46 @@ class QuestionsActivity : AppCompatActivity() {
             insets
         }
 
-
-        val n1 : Int = Random.nextInt(0, 99)
-        val n2 : Int = Random.nextInt(0, 99)
-        val bttnAnswer = findViewById<Button>(R.id.buttonAnswer)
-        val bttnNext = findViewById<Button>(R.id.buttonNext)
+        n1 = Random.nextInt(0, 99)
+        n2 = Random.nextInt(0, 99)
+        operator = options.random()
         val equacao = findViewById<TextView>(R.id.equacaoView)
+        equacao.text = "$n1 $operator $n2"
 
+//        val eq2 = findViewById<TextView>(R.id.equacaoView2)
+//        eq2.text = "aaa"
+        }
+
+    fun next(view: View){
+        val equacao = findViewById<TextView>(R.id.equacaoView)
+        n1 = Random.nextInt(0, 99)
+        n2 = Random.nextInt(0, 99)
+        operator = options.random()
         equacao.text = "$n1 + $n2"
-        val operator = options.random()
-        fun getOperator(view: View): Int{
-            var calc : Int = 0
-            if(operator == "+"){
-                calc = n1 + n2
-            }else{
-                calc = n1 - n2
-            }
-            return calc
-        }
-
-        fun confirma(view: View){
-
-            val calc : Int = getOperator(view)
-            val resposta = findViewById<TextView>(R.id.editTextNumber)
-
-            if(calc == resposta.text.toString().toInt()) {
-                right++
-            }
-            tries++
-            resposta.text = ""
-        }
-
-        fun next(view: View){
-            val n1 : Int = Random.nextInt(0, 99)
-            val n2 : Int = Random.nextInt(0, 99)
-            val operator = options.random()
-
-            return
-        }
-
     }
+//
+    fun getOperator(view: View): Int{
+        var calc : Int = 0
+        if(operator == "+"){
+            calc = n1 + n2
+        }else{
+            calc = n1 - n2
+        }
+        return calc
+    }
+
+//
+//    fun confirma(view: View){
+//
+//        val calc : Int = getOperator(view)
+//        val resposta = findViewById<TextView>(R.id.editTextNumber)
+//
+//        if(calc == resposta.text.toString().toInt()) {
+//            right++
+//        }
+//        tries++
+//        resposta.text = ""
+//    }
 }
 
 

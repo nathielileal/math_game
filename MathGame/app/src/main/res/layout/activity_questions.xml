@@ -19,6 +19,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/equacaoView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="181dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/editTextNumber"
         android:layout_width="wrap_content"
@@ -37,6 +50,7 @@
         android:layout_marginStart="156dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="165dp"
+        android:onClick="confirma"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +63,7 @@
         android:layout_marginStart="152dp"
         android:layout_marginTop="91dp"
         android:layout_marginBottom="190dp"
+        android:onClick="next"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
