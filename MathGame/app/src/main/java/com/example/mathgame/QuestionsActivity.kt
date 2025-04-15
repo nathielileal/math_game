@@ -35,7 +35,7 @@ class QuestionsActivity : AppCompatActivity() {
         }
 
         n1 = Random.nextInt(0, 99)
-        n2 = Random.nextInt(0, 99)
+        n2 = Random.nextInt(0, n1)
         operator = options.random()
         val equacao = findViewById<TextView>(R.id.equacaoView)
         equacao.text = "$n1 $operator $n2"
@@ -48,14 +48,14 @@ class QuestionsActivity : AppCompatActivity() {
     fun calcular (view: View){
 
         //if valor inserido == calc -> certo
-        val resposta = findViewById<EditText>(R.id.editTextNumber)
-        val calculo = getOperator(view)
-        val colorLayout = findViewById(R.id.button) as Button
-        if (resposta.toString().toInt() == calculo) {
-            colorLayout.setBackgroundColor(Color.GREEN)
-        } else {
-            colorLayout.setBackgroundColor(Color.RED)
-        }
+//        val resposta = findViewById<EditText>(R.id.editTextNumber)
+//        val calculo = getOperator()
+//        val colorLayout = findViewById(R.id.button) as Button
+//        if (resposta.toString().toInt() == calculo) {
+//            colorLayout.setBackgroundColor(Color.GREEN)
+//        } else {
+//            colorLayout.setBackgroundColor(Color.RED)
+//        }
 
         // habilita o botao next, até chegar na última questão.
 
@@ -77,7 +77,7 @@ class QuestionsActivity : AppCompatActivity() {
         val equacao = findViewById<TextView>(R.id.equacaoView)
         val eq2 = findViewById<TextView>(R.id.equacaoView2)
         n1 = Random.nextInt(0, 99)
-        n2 = Random.nextInt(0, 99)
+        n2 = Random.nextInt(0, n1)
         operator = options.random()
         equacao.text = "$n1 $operator $n2"
         calc = getOperator()
@@ -103,9 +103,14 @@ class QuestionsActivity : AppCompatActivity() {
 
         calc = getOperator()
         val resposta = findViewById<TextView>(R.id.editTextNumber)
-
+        val colorLayout = findViewById<View>(R.id.main)
+        val verdeSuave = Color.parseColor("#80A5D6A7") // verde claro pastel
+        val vermelhoSuave = Color.parseColor("#80EF9A9A") // vermelho claro pastel
         if(calc == resposta.text.toString().toInt()) {
+            colorLayout.setBackgroundColor(verdeSuave)
             right++
+        }else{
+            colorLayout.setBackgroundColor(vermelhoSuave)
         }
         tries++
         resposta.text = ""

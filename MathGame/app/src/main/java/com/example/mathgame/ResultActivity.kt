@@ -2,7 +2,9 @@ package com.example.mathgame
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,36 +22,34 @@ class ResultActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val bundle = intent.extras
+        var right : Int = 0
+        if(bundle != null) {
+            right = bundle.getInt("right")
+        }
         calcularTotal(right)
     }
 
-    fun recomecar(context: Context) {
-        /* resetar as variaveis e limpar dados */
-        var XXXXX = 0
-        var YYYYY = ""
-        val prefs = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-        prefs.edit() { clear() }
+    fun recomecar(view: View) {
 
         // volta pra MainActivity
-        val intent = Intent(context, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        context.startActivity(intent)
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        startActivity(intent)
     }
 
 
         fun calcularTotal(
-            right: EditText,
-            totalEditNumber: EditText
+            right: Int
         ) {
+            var result = findViewById<EditText>(R.id.totalEditNumber)
             try {
-                val valores = right;
+                val total = right*20
 
-                val total = valores.sumOf { it * 20 }
-
-                totalEditNumber.setText(total.toString())
+                result.setText(total.toString())
 
             } catch (e: Exception) {
-                totalEditNumber.setText("Erro")
+                result.setText("Erro")
                 e.printStackTrace()
             }
         }
