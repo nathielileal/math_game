@@ -38,7 +38,7 @@
         android:layout_marginTop="96dp"
         android:layout_marginEnd="165dp"
         android:onClick="confirma"
-        android:text="Button"
+        android:text="Confirmar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
@@ -51,7 +51,7 @@
         android:layout_marginTop="91dp"
         android:layout_marginBottom="190dp"
         android:onClick="next"
-        android:text="Button"
+        android:text="Próximo"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

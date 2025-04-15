@@ -97,6 +97,9 @@ class QuestionsActivity : AppCompatActivity() {
 
         var next = findViewById<Button>(R.id.buttonNext)
         next.visibility = View.VISIBLE
+        if(tries == 5){
+            next.text = "Finalizar"
+        }
     }
 }
 
