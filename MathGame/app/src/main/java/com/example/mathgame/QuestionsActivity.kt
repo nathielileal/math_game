@@ -45,25 +45,6 @@ class QuestionsActivity : AppCompatActivity() {
         }
 
 
-    fun calcular (view: View){
-
-        //if valor inserido == calc -> certo
-//        val resposta = findViewById<EditText>(R.id.editTextNumber)
-//        val calculo = getOperator()
-//        val colorLayout = findViewById(R.id.button) as Button
-//        if (resposta.toString().toInt() == calculo) {
-//            colorLayout.setBackgroundColor(Color.GREEN)
-//        } else {
-//            colorLayout.setBackgroundColor(Color.RED)
-//        }
-
-        // habilita o botao next, até chegar na última questão.
-
-
-
-        //deixar o botao de next visivel
-    }
-
     fun goNextActivity(view:View){
         val intent = Intent(this, ResultActivity::class.java)
 
@@ -75,13 +56,13 @@ class QuestionsActivity : AppCompatActivity() {
     fun next(view: View){
         if (tries < 5){
         val equacao = findViewById<TextView>(R.id.equacaoView)
-        val eq2 = findViewById<TextView>(R.id.equacaoView2)
         n1 = Random.nextInt(0, 99)
         n2 = Random.nextInt(0, n1)
         operator = options.random()
         equacao.text = "$n1 $operator $n2"
         calc = getOperator()
-        eq2.text = "$calc"
+        var next = findViewById<Button>(R.id.buttonNext)
+        next.visibility = View.INVISIBLE
         }else{
             goNextActivity(view)
         }
@@ -89,13 +70,12 @@ class QuestionsActivity : AppCompatActivity() {
     }
 
     fun getOperator(): Int{
-        val eq2 = findViewById<TextView>(R.id.equacaoView2)
+
         if(operator == "+"){
             calc = n1 + n2
         }else{
             calc = n1 - n2
         }
-        eq2.text = "$calc"
         return calc
     }
 
@@ -114,11 +94,9 @@ class QuestionsActivity : AppCompatActivity() {
         }
         tries++
         resposta.text = ""
-        val acertos = findViewById<TextView>(R.id.textView2)
-        val tnt = findViewById<TextView>(R.id.textView3)
-        acertos.text = "Acertos: $right"
-        tnt.text = "Tentativas: $tries"
 
+        var next = findViewById<Button>(R.id.buttonNext)
+        next.visibility = View.VISIBLE
     }
 }
 
